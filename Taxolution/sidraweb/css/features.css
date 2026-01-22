@@ -122,9 +122,41 @@
     flex-direction: column;
   }
 
+  .features-item {
+    aspect-ratio: auto;
+    min-height: 400px;
+    padding: 2em 1.5em;
+    justify-content: flex-start;
+    gap: 1.5em;
+  }
+
   .features-icon {
-    top: -25%;
-    transform: scale(0.75);
+    position: static;
+    transform: none;
+    order: 1;
+    margin-top: 2em;
+  }
+
+  .features-icon img {
+    max-width: 320px;
+    width: 90%;
+    height: auto;
+  }
+
+  .features-title {
+    position: static;
+    padding: 0;
+    order: 2;
+    text-align: left;
+  }
+
+  .features-title h2 {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+
+  .features-title p {
+    font-size: 14px;
   }
 
   .step-badge {

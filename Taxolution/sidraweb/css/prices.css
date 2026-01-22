@@ -82,10 +82,39 @@
 
   .prices-col h2 {
     width: 100%;
-    font-size: 64px;
+    font-size: 48px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .prices-copy {
     padding: 5em 1em 10em 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .prices-col h2 {
+    font-size: 32px;
+    line-height: 110%;
+  }
+
+  .prices-header {
+    padding: 3em 0 3em 0;
+  }
+
+  .prices-copy {
+    padding: 3em 1em 6em 1em;
+    font-size: 12px;
+  }
+
+  .prices-cta {
+    width: 90%;
+    padding: 3em 1em;
+  }
+
+  .prices-cta h1 {
+    font-size: 6vw;
+    word-wrap: break-word;
   }
 }

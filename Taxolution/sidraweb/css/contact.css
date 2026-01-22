@@ -9,6 +9,7 @@
   align-items: center;
   flex-direction: column;
   z-index: 1;
+  overflow-x: hidden;
 }
 
 .contact-hero-bg {
@@ -52,6 +53,7 @@
   padding: 4em 2em;
   max-width: 1400px;
   margin: 0 auto;
+  overflow-x: hidden;
 }
 
 .contact-grid {
@@ -370,14 +372,19 @@ a.contact-detail-item {
 @media (max-width: 600px) {
   .contact-hero {
     min-height: 300px;
+    padding: 1em;
   }
 
   .contact-hero-header h1 {
     font-size: 2rem;
   }
 
-  .contact-hero-header p {
+  .contact-hero-header h3 {
     font-size: 0.9rem;
+  }
+
+  .contact-content {
+    padding: 2em 1em;
   }
 
   .contact-info-header h2,

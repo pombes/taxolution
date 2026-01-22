@@ -37,6 +37,7 @@ body {
   height: 100%;
   font-family: var(--font-primary);
   background-color: var(--color-bg);
+  overflow-x: hidden;
 }
 
 html.lenis,
@@ -77,6 +78,8 @@ h2 {
   letter-spacing: -2px;
   line-height: 100%;
   text-transform: uppercase;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 img {
