@@ -234,7 +234,7 @@
       <section class="sticky-cards">
         <section class="projecr-hero pinned"></section>
 
-        <section class="card pinned">
+        <section class="card pinned" id="service-accounting">
           <div class="project">
             <div class="project-copy">
               <div class="project-header">
@@ -297,7 +297,7 @@
           </div>
         </section>
 
-        <section class="card pinned">
+        <section class="card pinned" id="service-company-formation">
           <div class="project">
             <div class="project-copy">
               <div class="project-header">
@@ -349,7 +349,7 @@
           </div>
         </section>
 
-        <section class="card pinned">
+        <section class="card pinned" id="service-visa-services">
           <div class="project">
             <div class="project-copy">
               <div class="project-header">
@@ -411,7 +411,7 @@
           </div>
         </section>
 
-        <section class="card scroll">
+        <section class="card scroll" id="service-tax-advice">
           <div class="project">
             <div class="project-copy">
               <div class="project-header">
@@ -652,7 +652,86 @@
         </div>
 
         <div class="footer-copyright">
-          <p>Made by Sidraweb</p>
+          <p></p>
+        </div>
+
+        <!-- Professional Footer -->
+        <div class="footer-main">
+          <div class="footer-main-content">
+            <!-- Company Info -->
+            <div class="footer-column footer-brand">
+              <div class="footer-logo">
+                <img src="./assets/app icons-05.png" alt="Dubai Taxolution" />
+              </div>
+              <p class="footer-tagline">Where accounting meets solutions</p>
+              <p class="footer-description">Comprehensive financial services for ambitious entrepreneurs across the UAE.</p>
+              <div class="footer-social">
+                <a href="https://www.instagram.com/dubaitaxolution/" target="_blank" aria-label="Instagram">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+                <a href="https://www.linkedin.com/company/dubai-taxolution/" target="_blank" aria-label="LinkedIn">
+                  <ion-icon name="logo-linkedin"></ion-icon>
+                </a>
+                <a href="https://wa.me/971586322598" target="_blank" aria-label="WhatsApp">
+                  <ion-icon name="logo-whatsapp"></ion-icon>
+                </a>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-column">
+              <h3 class="footer-column-title">Quick Links</h3>
+              <ul class="footer-links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Why Choose Us</a></li>
+                <li><a href="#cases">Our Services</a></li>
+                <li><a href="./pricing.html">Pricing</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+              </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-column">
+              <h3 class="footer-column-title">Services</h3>
+              <ul class="footer-links">
+                <li><a href="#service-accounting">Accounting</a></li>
+                <li><a href="#service-company-formation">Company Formation</a></li>
+                <li><a href="#service-visa-services">Visa Services</a></li>
+                <li><a href="#service-tax-advice">Tax Advice</a></li>
+              </ul>
+            </div>
+
+            <!-- Contact Us -->
+            <div class="footer-column">
+              <h3 class="footer-column-title">Contact Us</h3>
+              <ul class="footer-contact">
+                <li>
+                  <ion-icon name="call-outline"></ion-icon>
+                  <a href="tel:+971586322598">+971 58 632 2598</a>
+                </li>
+                <li>
+                  <ion-icon name="mail-outline"></ion-icon>
+                  <a href="mailto:info@dubaitaxolution.com">info@dubaitaxolution.com</a>
+                </li>
+                <li>
+                  <ion-icon name="location-outline"></ion-icon>
+                  <span>Dubai, United Arab Emirates</span>
+                </li>
+                <li>
+                  <ion-icon name="time-outline"></ion-icon>
+                  <span>Available 24/7 for your questions and needs</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Footer Bottom -->
+          <div class="footer-bottom">
+            <div class="footer-bottom-content">
+              <p class="footer-copyright-text">© 2026 Taxolution. All Rights Reserved.</p>
+              <p class="footer-powered">Powered by <a href="https://sidraweb.com" target="_blank">SidraWeb</a></p>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
@@ -672,10 +751,39 @@
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
-
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-          });
+          
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            // For service cards with sticky scroll, calculate position manually
+            if (targetId.startsWith("#service-")) {
+              // Map of service IDs to their scroll positions
+              const servicePositions = {
+                '#service-accounting': 0,
+                '#service-company-formation': 1,
+                '#service-visa-services': 2,
+                '#service-tax-advice': 3
+              };
+              
+              const stickyCardsSection = document.querySelector(".sticky-cards");
+              const cardPosition = servicePositions[targetId] || 0;
+              
+              // Calculate scroll position based on card index
+              // Add viewport height for each card after the first
+              const scrollPosition = stickyCardsSection.offsetTop + (cardPosition * (window.innerHeight * 0.95));
+              
+              window.scrollTo({
+                top: scrollPosition,
+                behavior: "smooth"
+              });
+            } else {
+              // Normal smooth scroll for other elements
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+              });
+            }
+          }
         });
       });
     </script>
