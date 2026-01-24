@@ -191,7 +191,8 @@ section.card {
   .project-copy {
     padding: 1.5em;
     padding-bottom: 5em;
-    overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
   }
 
   .project-img {
@@ -280,6 +281,11 @@ section.card {
   .tax-services-list {
     margin: 0.75em 0 1.25em 0;
   }
+
+  .project-copy {
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
 }
 
 /* Medium smartphones */
@@ -292,6 +298,8 @@ section.card {
   .project-copy {
     padding: 1.25em;
     padding-bottom: 5.5em;
+    overflow-y: hidden;
+    overflow-x: hidden;
   }
 
   .project-img {
@@ -300,16 +308,23 @@ section.card {
   }
 
   .project-header h3 {
-    font-size: 20px;
+    font-size: 19px;
+    margin-bottom: 0.25em;
   }
 
   .project-copy p {
-    font-size: 12px;
-    padding: 0.75em 0;
+    font-size: 11.5px;
+    padding: 0.6em 0;
+    line-height: 1.4;
   }
 
   .tax-services-list {
     margin: 0.75em 0 1.75em 0;
+  }
+
+  /* Extra space for cards with 4 items (like Tax Advice) */
+  .tax-services-list:has(.tax-service-item:nth-child(4)) {
+    margin: 0.75em 0 2.25em 0;
   }
 }
 
@@ -321,5 +336,23 @@ section.card {
 
   .project-copy {
     padding-bottom: 6em;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+
+  .project-header h3 {
+    font-size: 18px;
+    margin-bottom: 0.2em;
+  }
+
+  .project-copy p {
+    font-size: 11px;
+    padding: 0.5em 0;
+    line-height: 1.35;
+  }
+
+  /* Extra padding for cards with 4 items (Tax Advice) */
+  .tax-services-list:has(.tax-service-item:nth-child(4)) {
+    margin: 0.75em 0 2.75em 0;
   }
 }
