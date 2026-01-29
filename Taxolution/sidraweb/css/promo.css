@@ -35,14 +35,14 @@
 }
 
 .promo h2 {
-  font-size: 3vw;
+  font-size: 2.5vw;
   letter-spacing: 0;
   line-height: 105%;
 }
 
 .promo h1 {
   margin: 0;
-  font-size: 10vw;
+  font-size: 7vw;
 }
 
 @media (max-width: 900px) {
@@ -51,10 +51,10 @@
   }
 
   .promo h2 {
-    font-size: 4vw;
+    font-size: 3.5vw;
   }
 
   .promo h1 {
-    font-size: 12vw;
+    font-size: 10vw;
   }
 }

@@ -30,7 +30,7 @@
 }
 
 .prices-hero h3 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   letter-spacing: 0;
   line-height: 105%;
   font-weight: 400;
@@ -41,7 +41,7 @@
 
 .prices-hero h1 {
   margin: 0;
-  font-size: 10vw;
+  font-size: 7vw;
 }
 
 @media (max-width: 900px) {
@@ -54,10 +54,10 @@
   }
 
   .prices-hero h1 {
-    font-size: 14vw;
+    font-size: 10vw;
   }
 
   .prices-hero h3 {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 }

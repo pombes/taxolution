@@ -54,10 +54,10 @@
   font-size: 1.1rem;
   font-weight: 400;
   line-height: 1.6;
-  color: var(--color-white);
+  color: #F5F5F5;
   margin-bottom: 2rem;
   text-transform: uppercase;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.4);
 }
 
 .hero-cta {
@@ -83,12 +83,13 @@
 
 @media (max-width: 900px) {
   .hero {
-    align-items: flex-end;
-    padding-bottom: 4em;
+    align-items: center;
+    padding-bottom: 0;
   }
 
   .hero-header {
     padding: 1.5em;
+    margin-top: -10vh;
   }
 
   .hero-content {

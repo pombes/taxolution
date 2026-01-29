@@ -3,6 +3,14 @@ section.card {
   height: 100vh;
 }
 
+.sticky-cards {
+  margin-top: -30vh;
+}
+
+.projecr-hero {
+  height: 30vh !important;
+}
+
 .card.scroll {
   position: relative;
 }
@@ -44,6 +52,7 @@ section.card {
   font-weight: 700;
   font-size: 40px;
   line-height: 100%;
+  margin-bottom: 0.5em;
 }
 
 .project-header p {
@@ -51,7 +60,7 @@ section.card {
 }
 
 .project-copy p {
-  padding: 1em 0;
+  padding: 0.5em 0;
 }
 
 .project-cta {
@@ -249,6 +258,14 @@ section.card {
     position: absolute;
     bottom: 1em;
     padding: 1em 1em 0.75em 1em;
+    text-align: center;
+  }
+
+  .project-cta p {
+    font-size: 0.95rem;
+    padding: 1rem 2.5rem;
+    white-space: nowrap;
+    min-width: fit-content;
   }
 }
 
@@ -285,6 +302,12 @@ section.card {
   .project-copy {
     overflow-y: hidden;
     overflow-x: hidden;
+  }
+
+  .project-cta p {
+    font-size: 0.95rem;
+    padding: 1rem 2.5rem;
+    white-space: nowrap;
   }
 }
 
@@ -326,6 +349,12 @@ section.card {
   .tax-services-list:has(.tax-service-item:nth-child(4)) {
     margin: 0.75em 0 2.25em 0;
   }
+
+  .project-cta p {
+    font-size: 0.95rem;
+    padding: 1rem 2.5rem;
+    white-space: nowrap;
+  }
 }
 
 /* Small screens like Samsung S25, smaller compact phones */
@@ -354,5 +383,11 @@ section.card {
   /* Extra padding for cards with 4 items (Tax Advice) */
   .tax-services-list:has(.tax-service-item:nth-child(4)) {
     margin: 0.75em 0 2.75em 0;
+  }
+
+  .project-cta p {
+    font-size: 0.95rem;
+    padding: 1rem 2.5rem;
+    white-space: nowrap;
   }
 }

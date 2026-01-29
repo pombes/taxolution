@@ -2,159 +2,228 @@
 nav {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   height: 70px;
-  padding: 1.5em 1em;
+  padding: 0 3em;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   text-transform: uppercase;
-  z-index: 10;
+  z-index: 1000;
+  background: transparent;
+  backdrop-filter: none;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
 }
 
-.logo,
-.clock,
-.ctas {
-  flex: 1;
+nav.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+nav.scrolling {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
 
 .logo img {
-  width: 50px;
+  width: 60px;
   height: auto;
 }
 
 .ctas {
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
-  gap: 0.5em;
+  gap: 0.75em;
+  margin-left: auto;
 }
 
-.sound,
 .contact,
 .menu {
-  flex: 1;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--color-white);
-  border-radius: 8px;
+  border-radius: 25px;
   cursor: pointer;
-  padding: 1em 0;
-}
-
-.sound p,
-.contact a,
-.menu p {
-  color: var(--color-navy);
-}
-
-.menu,
-.contact {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.menu p,
-.contact a {
-  padding-right: 0.75em;
-}
-
-.menu .menu-icon,
-.contact .contact-icon {
-  position: relative;
-  left: 0.125em;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: rotate(45deg);
-  transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.contact .contact-icon {
-  color: var(--color-white);
-  transform: rotate(0);
-  left: 0.25em;
-  font-size: 8px;
+  transition: all 0.3s ease;
 }
 
 .contact {
+  padding: 0.5em 1em;
   background: linear-gradient(135deg, var(--color-deep-brown), var(--color-peach));
+  border: none;
+}
+
+.contact:hover {
+  background: linear-gradient(135deg, var(--color-deep-brown) 10%, var(--color-peach) 90%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(114, 46, 33, 0.3);
+}
+
+.menu {
+  background: rgba(21, 51, 87, 0.1);
+  border: 1px solid rgba(21, 51, 87, 0.2);
+}
+
+.menu:hover {
+  background: rgba(21, 51, 87, 0.15);
+  border-color: rgba(21, 51, 87, 0.3);
 }
 
 .contact a {
   color: var(--color-white);
-  position: absolute;
-  right: 0;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.contact .contact-icon {
+  display: none;
+}
+
+/* Hamburger Menu */
+.menu {
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  background: rgba(21, 51, 87, 0.1);
+  border: 1px solid rgba(21, 51, 87, 0.2);
+}
+
+.menu:hover {
+  background: rgba(21, 51, 87, 0.15);
+  border-color: rgba(21, 51, 87, 0.3);
+}
+
+.menu p {
+  display: none;
+}
+
+.menu .menu-icon {
+  display: none;
+}
+
+.hamburger {
+  width: 20px;
+  height: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.hamburger span {
   width: 100%;
-  text-align: right;
+  height: 2px;
+  background: var(--color-white);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+nav.scrolling .hamburger span {
+  background: var(--color-navy);
 }
 
 .menu.active {
-  background: var(--color-white);
+  background: rgba(21, 51, 87, 0.2);
 }
 
-.menu.active p,
-.menu.active ion-icon {
-  color: var(--color-navy);
+.menu.active .hamburger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
 }
 
-.menu.active .menu-icon {
-  transform: rotate(270deg);
-  transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+.menu.active .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu.active .hamburger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 @media (max-width: 900px) {
+  nav {
+    height: 60px;
+    padding: 0 2em;
+  }
+
+  .logo img {
+    width: 40px;
+  }
+
   .ctas {
-    /* On some iOS devices the bottom browser UI can hide fixed-bottom CTAs.
-       Keep CTAs in the top navbar on mobile for consistent visibility. */
-    position: relative;
-    left: auto;
-    bottom: auto;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-  }
-
-  .clock {
-    text-align: right;
-  }
-
-  .menu,
-  .contact {
-    padding: 1em 0;
+    gap: 0.6em;
   }
 
   .contact {
-    justify-content: center;
-  }
-
-  .contact .contact-icon {
-    display: none;
+    padding: 0.45em 0.85em;
   }
 
   .contact a {
-    position: static;
-    text-align: center;
-    width: auto;
-    padding: 0;
+    font-size: 10px;
   }
 
-  .menu .menu-icon {
-    left: 0;
+  .menu {
+    width: 42px;
+    height: 42px;
   }
 
-  .menu.active {
-    background: var(--color-bg);
+  .hamburger {
+    width: 18px;
+    height: 14px;
   }
 
-  .menu.active p,
-  .menu.active ion-icon {
-    color: var(--color-text);
+  .hamburger span {
+    height: 2px;
+  }
+
+  .menu.active .hamburger span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .menu.active .hamburger span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 0 1.5em;
+    height: 55px;
+  }
+
+  .logo img {
+    width: 35px;
+  }
+
+  .contact {
+    padding: 0.4em 0.75em;
+  }
+
+  .contact a {
+    font-size: 9px;
+  }
+
+  .menu {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hamburger {
+    width: 16px;
+    height: 12px;
   }
 }

@@ -2,14 +2,16 @@
   width: 100%;
   height: max-content;
   background: var(--color-bg-secondary);
-  padding-bottom: 12em;
+  padding-bottom: 6em;
   border-radius: 12px;
 }
 
 .prices-header {
   position: relative;
   width: 100%;
-  padding: 20em 0 10em 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2em 2em 10em 2em;
   display: flex;
   z-index: 2;
 }
@@ -19,11 +21,11 @@
 }
 
 .prices-col:nth-child(1) {
-  flex: 2;
+  flex: 1;
 }
 
 .prices-col:nth-child(2) {
-  flex: 4;
+  flex: 5;
 }
 
 .prices-col h2 {
@@ -38,8 +40,21 @@
 
 .prices-copy {
   width: 50%;
-  padding: 10em 1em 2em 1em;
+  padding: 1.5em 1em 3em 1em;
   text-transform: uppercase;
+}
+
+/* Pricing cards in prices section */
+.prices .pricing-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2em;
+}
+
+.prices .pricing-disclaimer {
+  max-width: 1400px;
+  margin: 3em auto 0;
+  padding: 0 2em;
 }
 
 .prices-cta {
@@ -89,7 +104,15 @@
   }
 
   .prices-copy {
-    padding: 5em 1em 10em 1em;
+    padding: 1.5em 1em 2em 1em;
+  }
+
+  .prices .pricing-container {
+    padding: 0 1em;
+  }
+
+  .prices .pricing-disclaimer {
+    padding: 0 1em;
   }
 }
 
@@ -104,8 +127,16 @@
   }
 
   .prices-copy {
-    padding: 3em 1em 6em 1em;
+    padding: 1.5em 1em 2em 1em;
     font-size: 12px;
+  }
+
+  .prices .pricing-container {
+    padding: 0 1em;
+  }
+
+  .prices .pricing-disclaimer {
+    padding: 0 1em;
   }
 
   .prices-cta {

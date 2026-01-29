@@ -7,7 +7,7 @@
   padding: 1em;
   display: flex;
   text-transform: uppercase;
-  z-index: 2;
+  z-index: 1001;
   opacity: 0;
 }
 

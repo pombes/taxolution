@@ -12,7 +12,7 @@
     <meta name="author" content="Sidraweb" />
 
     <!-- favicon -->
-    <link rel="icon" type="image/png" href="./assets/Favicon-03.png" />
+    <link rel="icon" type="image/png" href="./assets/Favicon-02.png" />
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="./css/projects.css" />
     <link rel="stylesheet" href="./css/prices-hero.css" />
     <link rel="stylesheet" href="./css/prices.css" />
+    <link rel="stylesheet" href="./css/pricing-cards.css" />
     <link rel="stylesheet" href="./css/features.css" />
     <link rel="stylesheet" href="./css/footer.css" />
 
@@ -57,7 +58,7 @@
     <!-- navbar -->
     <nav>
       <div class="logo">
-        <a href="#hero"><img src="./assets/app icons-05.png" alt="" /></a>
+        <a href="#hero"><img src="./assets/logo transparant.png" alt="" /></a>
       </div>
 
 
@@ -70,10 +71,11 @@
         </div>
 
         <div class="menu">
-          <div class="menu-icon">
-            <ion-icon name="close-sharp"></ion-icon>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
-          <p>Menu</p>
         </div>
       </div>
     </nav>
@@ -84,23 +86,18 @@
       <div class="whitespace"></div>
       <div class="menu-items">
         <a href="#about" class="menu-item">
-          <span>01</span>
           <span>About Us</span>
         </a>
         <a href="#why-choose-us" class="menu-item">
-          <span>02</span>
           <span>Why Choose Us</span>
         </a>
         <a href="#services" class="menu-item">
-          <span>03</span>
           <span>Our Services</span>
         </a>
         <a href="./pricing.html" class="menu-item">
-          <span>04</span>
           <span>Pricing</span>
         </a>
         <a href="./contact.html" class="menu-item">
-          <span>05</span>
           <span>Contact</span>
         </a>
       </div>
@@ -127,7 +124,7 @@
       <section class="about" id="about">
         <div class="about-header">
           <div class="about-col">
-            <p class="callout">How can we help</p>
+            <p class="callout">How can we help?</p>
           </div>
           <div class="about-col">
             <h2>
@@ -145,7 +142,7 @@
       <!-- services -->
       <section class="services" id="why-choose-us">
         <div class="services-col">
-          <p class="callout">WHY CHOOSE US</p>
+          <p class="callout">WHY CHOOSE US?</p>
         </div>
         <div class="services-col">
           <div class="services-row">
@@ -503,11 +500,73 @@
           </div>
         </div>
 
-        <div class="prices-cta">
-          <a href="./pricing.html">
-            <h1>SOLUTIONS FROM</h1>
-            <h1>AED 1,250</h1>
-          </a>
+        <!-- Pricing Cards -->
+        <div class="pricing-container">
+          <!-- Starter Plan -->
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3 class="plan-name">Starter</h3>
+              <p class="plan-subtitle">From 0 to 100 Monthly Transactions</p>
+            </div>
+            <div class="pricing-price">
+              <h2>AED 1,250</h2>
+              <p>Per Month (excl. setup fee)</p>
+            </div>
+            <ul class="pricing-features">
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>Monthly Bookkeeping</span></li>
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>Annual Figures</span></li>
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>VAT Returns</span></li>
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>Corporate Tax & VAT Registration</span></li>
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>Access Your Administration Anytime & Anywhere</span></li>
+            </ul>
+            <a href="./contact.html" class="pricing-cta">Get started</a>
+          </div>
+
+          <!-- Enterprise Plan (Featured) -->
+          <div class="pricing-card featured">
+            <div class="featured-badge">Popular</div>
+            <div class="pricing-header">
+              <h3 class="plan-name">Enterprise</h3>
+              <p class="plan-subtitle">From 201 to 400 Monthly Transactions</p>
+            </div>
+            <div class="pricing-price">
+              <h2>AED 3,000</h2>
+              <p>Per Month (excl. setup fee)</p>
+            </div>
+            <ul class="pricing-features">
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>Monthly Bookkeeping</span></li>
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>Annual Figures</span></li>
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>VAT Returns</span></li>
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>Corporate Tax & VAT Registration</span></li>
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>Access Your Administration Anytime & Anywhere</span></li>
+            </ul>
+            <a href="./contact.html" class="pricing-cta">Get started</a>
+          </div>
+
+          <!-- Business Plan -->
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3 class="plan-name">Business</h3>
+              <p class="plan-subtitle">From 101 to 200 Monthly Transactions</p>
+            </div>
+            <div class="pricing-price">
+              <h2>AED 1,750</h2>
+              <p>Per Month (excl. setup fee)</p>
+            </div>
+            <ul class="pricing-features">
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>Monthly Bookkeeping</span></li>
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>Annual Figures</span></li>
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>VAT Returns</span></li>
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>Corporate Tax & VAT Registration</span></li>
+              <li><ion-icon name="checkmark-sharp"></ion-icon><span>Access Your Administration Anytime & Anywhere</span></li>
+            </ul>
+            <a href="./contact.html" class="pricing-cta">Get started</a>
+          </div>
+        </div>
+        
+        <!-- Disclaimer -->
+        <div class="pricing-disclaimer">
+          <p>*The above prices are exclusive setup fee. Please note that if your needs fall outside of these packages, we'll gladly provide a custom quote tailored to your requirements.</p>
         </div>
       </section>
 
@@ -642,11 +701,10 @@
             <div class="form-row">
               <textarea name="" rows="4" placeholder="Tell us more about your business or specific needs *" required></textarea>
             </div>
-          </div>
-
-          <div class="form-col">
-            <div class="submit-btn">
-              <h3>Send</h3>
+            <div class="form-row">
+              <button type="submit" class="submit-btn">
+                <h3>Send</h3>
+              </button>
             </div>
           </div>
         </div>
@@ -661,7 +719,7 @@
             <!-- Company Info -->
             <div class="footer-column footer-brand">
               <div class="footer-logo">
-                <img src="./assets/app icons-05.png" alt="Dubai Taxolution" />
+                <img src="./assets/app icons-03.png" alt="Dubai Taxolution" />
               </div>
               <p class="footer-tagline">Where accounting meets solutions</p>
               <p class="footer-description">Comprehensive financial services for ambitious entrepreneurs across the UAE.</p>
