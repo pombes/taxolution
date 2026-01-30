@@ -204,6 +204,11 @@ section.card {
     overflow-x: hidden;
   }
 
+  /* Extra padding for cards with 4 items (like Tax Advice) */
+  .project-copy:has(.tax-service-item:nth-child(4)) {
+    padding-bottom: 6.5em;
+  }
+
   .project-img {
     flex: 2;
     min-height: 200px;
@@ -279,6 +284,13 @@ section.card {
   .project-copy {
     padding: 1.25em;
     padding-bottom: 4.75em;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+
+  /* Extra padding for cards with 4 items (like Tax Advice) */
+  .project-copy:has(.tax-service-item:nth-child(4)) {
+    padding-bottom: 6em;
   }
 
   .project-img {
@@ -297,11 +309,6 @@ section.card {
 
   .tax-services-list {
     margin: 0.75em 0 1.25em 0;
-  }
-
-  .project-copy {
-    overflow-y: hidden;
-    overflow-x: hidden;
   }
 
   .project-cta p {
@@ -323,6 +330,11 @@ section.card {
     padding-bottom: 5.5em;
     overflow-y: hidden;
     overflow-x: hidden;
+  }
+
+  /* Extra padding for cards with 4 items (like Tax Advice) */
+  .project-copy:has(.tax-service-item:nth-child(4)) {
+    padding-bottom: 6.5em;
   }
 
   .project-img {
@@ -367,6 +379,11 @@ section.card {
     padding-bottom: 6em;
     overflow-y: hidden;
     overflow-x: hidden;
+  }
+
+  /* Extra padding for cards with 4 items (like Tax Advice) */
+  .project-copy:has(.tax-service-item:nth-child(4)) {
+    padding-bottom: 7.5em;
   }
 
   .project-header h3 {
