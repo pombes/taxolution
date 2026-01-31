@@ -1,7 +1,7 @@
 .pricing-section {
   width: 100%;
   min-height: 100vh;
-  padding: 4em 2em 8em 2em;
+  padding: 2em 2em 8em 2em;
   background: var(--color-bg);
   display: flex;
   flex-direction: column;
@@ -210,6 +210,21 @@
   .pricing-container {
     grid-template-columns: 1fr;
     gap: 2em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Reorder cards: Starter (1st) -> Business (3rd) -> Enterprise (2nd/Featured) */
+  .pricing-card:nth-child(1) {
+    order: 1;
+  }
+
+  .pricing-card:nth-child(2) {
+    order: 3; /* Featured/Enterprise to bottom */
+  }
+
+  .pricing-card:nth-child(3) {
+    order: 2; /* Business in middle */
   }
 
   .pricing-card.featured {

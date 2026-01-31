@@ -33,10 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Clear existing timeout
     clearTimeout(scrollTimeout);
     
-    // Hide nav after 1.5 seconds of no scrolling (only if not at top and not hovering)
+    // Hide nav after 1.5 seconds of no scrolling (only if not at top, not hovering, and menu is closed)
     if (currentScrollY > 50) {
       scrollTimeout = setTimeout(() => {
-        if (!isHovering) {
+        if (!isHovering && !isMenuOpen) {
           nav.classList.remove("scrolling");
           nav.classList.remove("visible");
           isScrolling = false;
@@ -64,10 +64,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Clear existing timeout
     clearTimeout(scrollTimeout);
     
-    // Hide nav after leaving if scrolled down
+    // Hide nav after leaving if scrolled down and menu is closed
     if (currentScrollY > 50) {
       scrollTimeout = setTimeout(() => {
-        if (!isHovering) {
+        if (!isHovering && !isMenuOpen) {
           nav.classList.remove("scrolling");
           nav.classList.remove("visible");
         }
@@ -86,6 +86,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function toggleMenu() {
     if (!isMenuOpen) {
       menuToggleBtn.classList.add("active");
+      
+      // Keep nav visible when menu opens
+      nav.classList.add("visible");
+      if (window.scrollY > 50) {
+        nav.classList.add("scrolling");
+      }
 
       gsap.to(menuItemsContainer, {
         y: 0,

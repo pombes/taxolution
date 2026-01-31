@@ -1,14 +1,15 @@
 section.card {
   width: 100vw;
   height: 100vh;
+  margin-bottom: -20vh;
 }
 
 .sticky-cards {
-  margin-top: -30vh;
+  margin-top: -50vh;
 }
 
 .projecr-hero {
-  height: 30vh !important;
+  height: 10vh !important;
 }
 
 .card.scroll {
@@ -70,6 +71,7 @@ section.card {
   width: 100%;
   padding: 1em;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .project-cta a {
@@ -186,7 +188,22 @@ section.card {
   opacity: 0.85;
 }
 
+/* Smaller desktop screens (like MacBook Pro 13" non-fullscreen) */
+@media (max-width: 1400px) and (min-width: 901px) {
+  .project-copy:has(.tax-service-item:nth-child(4)) {
+    padding-bottom: 6em;
+  }
+}
+
 @media (max-width: 900px) {
+  .sticky-cards {
+    margin-top: -45vh;
+  }
+
+  .projecr-hero {
+    height: 20vh !important;
+  }
+
   .project {
     flex-direction: column;
     width: 90%;

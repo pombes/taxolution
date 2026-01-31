@@ -132,6 +132,7 @@ nav.scrolling {
   background: var(--color-white);
   border-radius: 2px;
   transition: all 0.3s ease;
+  transform-origin: center center;
 }
 
 nav.scrolling .hamburger span {
@@ -143,7 +144,10 @@ nav.scrolling .hamburger span {
 }
 
 .menu.active .hamburger span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+  transform: rotate(45deg) translateY(0px);
+  position: absolute;
+  top: 50%;
+  margin-top: -1px;
 }
 
 .menu.active .hamburger span:nth-child(2) {
@@ -151,7 +155,10 @@ nav.scrolling .hamburger span {
 }
 
 .menu.active .hamburger span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: rotate(-45deg) translateY(0px);
+  position: absolute;
+  top: 50%;
+  margin-top: -1px;
 }
 
 @media (max-width: 900px) {
@@ -161,7 +168,7 @@ nav.scrolling .hamburger span {
   }
 
   .logo img {
-    width: 40px;
+    width: 50px;
   }
 
   .ctas {
@@ -184,6 +191,7 @@ nav.scrolling .hamburger span {
   .hamburger {
     width: 18px;
     height: 14px;
+    position: relative;
   }
 
   .hamburger span {
@@ -191,11 +199,17 @@ nav.scrolling .hamburger span {
   }
 
   .menu.active .hamburger span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
   }
 
   .menu.active .hamburger span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
   }
 }
 
@@ -206,7 +220,7 @@ nav.scrolling .hamburger span {
   }
 
   .logo img {
-    width: 35px;
+    width: 45px;
   }
 
   .contact {
