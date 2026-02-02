@@ -1,0 +1,6 @@
+# Confidential API Keys
+API_KEY_CONFIG.txt
+
+# Environment files
+.env
+.env.local

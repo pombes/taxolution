@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let isHovering = false;
   let isScrolling = false;
   
+  // Check if we're on pricing or contact page
+  const isPricingOrContactPage = window.location.pathname.includes('pricing.html') || window.location.pathname.includes('contact.html');
+  
   function handleScroll() {
     const currentScrollY = window.scrollY;
     
@@ -24,9 +27,11 @@ document.addEventListener("DOMContentLoaded", function () {
       nav.classList.add("scrolling");
       nav.classList.add("visible");
     } else {
-      // At the top: show nav but without scrolling class (transparent)
+      // At the top: on pricing/contact pages keep scrolling class, on homepage make transparent
       isScrolling = false;
-      nav.classList.remove("scrolling");
+      if (!isPricingOrContactPage) {
+        nav.classList.remove("scrolling");
+      }
       nav.classList.add("visible");
     }
     
@@ -52,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
     isHovering = true;
     const currentScrollY = window.scrollY;
     nav.classList.add("visible");
-    if (currentScrollY > 50) {
+    if (currentScrollY > 50 || isPricingOrContactPage) {
       nav.classList.add("scrolling");
     }
   });
@@ -89,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
       // Keep nav visible when menu opens
       nav.classList.add("visible");
-      if (window.scrollY > 50) {
+      if (window.scrollY > 50 || isPricingOrContactPage) {
         nav.classList.add("scrolling");
       }
 

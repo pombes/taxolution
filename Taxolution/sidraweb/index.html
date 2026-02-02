@@ -676,38 +676,39 @@
         </div>
         <div class="footer-form">
           <div class="form-col">
+            <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" />
             <div class="form-row">
-              <input type="text" placeholder="Your Name *" required />
-              <input type="text" placeholder="Your Company" />
+              <input type="text" name="name" placeholder="Your Name *" required />
+              <input type="text" name="company" placeholder="Your Company" />
             </div>
             <div class="form-row">
-              <input type="email" placeholder="Email *" required />
+              <input type="email" name="email" placeholder="Email *" required />
             </div>
             <div class="form-row">
-              <input type="tel" placeholder="Phone Number *" required />
+              <input type="tel" name="phone" placeholder="Phone Number *" required />
             </div>
             <div class="form-row">
-              <select required>
+              <select name="service" required>
                 <option value="" disabled selected>Select a Service *</option>
-                <option value="accounting">Accounting</option>
-                <option value="business-formation">Business Formation</option>
-                <option value="visa-services">Visa Services</option>
-                <option value="tax-advise">Tax Advise</option>
-                <option value="custom-solutions">Custom Solutions</option>
+                <option value="Accounting">Accounting</option>
+                <option value="Business Formation">Business Formation</option>
+                <option value="Visa Services">Visa Services</option>
+                <option value="Tax Advise">Tax Advise</option>
+                <option value="Custom Solutions">Custom Solutions</option>
               </select>
             </div>
             <div class="form-row">
-              <select required>
+              <select name="revenue" required>
                 <option value="" disabled selected>Estimated Annual Revenue *</option>
-                <option value="less-500k">Less than AED 500,000</option>
-                <option value="500k-1m">AED 500,000 - 1 million</option>
-                <option value="1m-5m">AED 1 - 5 million</option>
-                <option value="5m-10m">AED 5 - 10 million</option>
-                <option value="more-10m">More than AED 10 million</option>
+                <option value="Less than AED 500,000">Less than AED 500,000</option>
+                <option value="AED 500,000 - 1 million">AED 500,000 - 1 million</option>
+                <option value="AED 1 - 5 million">AED 1 - 5 million</option>
+                <option value="AED 5 - 10 million">AED 5 - 10 million</option>
+                <option value="More than AED 10 million">More than AED 10 million</option>
               </select>
             </div>
             <div class="form-row">
-              <textarea name="" rows="4" placeholder="Tell us more about your business or specific needs *" required></textarea>
+              <textarea name="message" rows="4" placeholder="Tell us more about your business or specific needs *" required></textarea>
             </div>
             <div class="form-row">
               <button type="submit" class="submit-btn">
@@ -795,7 +796,7 @@
           <div class="footer-bottom">
             <div class="footer-bottom-content">
               <p class="footer-copyright-text">© 2026 Taxolution. All Rights Reserved.</p>
-              <p class="footer-powered">Made by <a href="https://sidraweb.com" target="_blank">SidraWeb</a></p>
+              <p class="footer-powered">Made by <a href="https://sidraweb.design" target="_blank">SidraWeb</a></p>
             </div>
           </div>
         </div>
@@ -812,6 +813,7 @@
     <script src="./js/about.js"></script>
     <script src="./js/projects.js"></script>
     <script src="./js/prices.js"></script>
+    <script src="./js/form-handler.js"></script>
 
     <script>
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
