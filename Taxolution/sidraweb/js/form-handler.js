@@ -166,13 +166,5 @@ style.textContent = `
       transform: translateY(-10px);
     }
   }
-  
-  .honeypot {
-    position: absolute !important;
-    left: -9999px !important;
-    width: 1px !important;
-    height: 1px !important;
-    overflow: hidden !important;
-  }
 `;
 document.head.appendChild(style);

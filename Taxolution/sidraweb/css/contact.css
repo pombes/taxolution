@@ -220,7 +220,6 @@ a.contact-detail-item {
   border-radius: 8px;
   outline: none;
   transition: all 0.3s ease;
-  text-transform: uppercase;
 }
 
 .contact-form select {
@@ -234,7 +233,6 @@ a.contact-detail-item {
 }
 
 .contact-form select option {
-  text-transform: uppercase;
   background: #0F2642;
   color: var(--color-white);
 }
@@ -250,6 +248,25 @@ a.contact-detail-item {
 .contact-form textarea:focus {
   border-color: var(--color-peach);
   box-shadow: 0 0 0 2px rgba(255, 190, 165, 0.2);
+}
+
+/* Prevent white background on autofill */
+.contact-form input:-webkit-autofill,
+.contact-form input:-webkit-autofill:hover,
+.contact-form input:-webkit-autofill:focus,
+.contact-form input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #0F2642 inset !important;
+  -webkit-text-fill-color: var(--color-white) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.contact-form textarea:-webkit-autofill,
+.contact-form textarea:-webkit-autofill:hover,
+.contact-form textarea:-webkit-autofill:focus,
+.contact-form textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #0F2642 inset !important;
+  -webkit-text-fill-color: var(--color-white) !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .contact-form textarea {

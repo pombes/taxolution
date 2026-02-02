@@ -107,3 +107,8 @@ img {
   font-size: 16px;
   font-weight: 600;
 }
+
+/* Honeypot field - hidden from users but visible to bots for spam protection */
+.honeypot {
+  display: none !important;
+}

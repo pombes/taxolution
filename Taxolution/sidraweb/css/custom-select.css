@@ -1,0 +1,214 @@
+/* Custom Select Dropdown Styling */
+.custom-select {
+  position: relative;
+  display: none;
+}
+
+.custom-select-trigger {
+  flex: 1;
+  border: 1px solid rgba(255, 190, 165, 0.3);
+  outline: none;
+  padding: 1.5em 1em;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background: #0F2642;
+  font-family: var(--font-primary);
+  font-size: 13px;
+  color: var(--color-white);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(255, 190, 165, 0.3);
+}
+
+.custom-select-trigger span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  font-family: var(--font-primary);
+}
+
+.custom-select-trigger.has-value span {
+  color: var(--color-white);
+}
+
+.custom-select-trigger ion-icon {
+  font-size: 20px;
+  color: var(--color-peach);
+  transition: transform 0.3s ease;
+}
+
+.custom-select-trigger:active {
+  border-color: var(--color-peach);
+  box-shadow: 0 0 0 2px rgba(255, 190, 165, 0.2);
+}
+
+/* Overlay */
+.custom-select-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 38, 66, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+}
+
+.custom-select-overlay.active {
+  display: flex;
+}
+
+/* Options Container */
+.custom-select-options {
+  background: var(--color-text);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 0.5em;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Close Button */
+.custom-select-close {
+  position: sticky;
+  top: 0;
+  background: var(--color-text-secondary);
+  padding: 1em;
+  border-radius: 8px;
+  margin-bottom: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  -webkit-tap-highlight-color: rgba(255, 190, 165, 0.3);
+}
+
+.custom-select-close:active {
+  background: var(--color-text-secondary);
+  transform: scale(0.95);
+}
+
+.custom-select-close ion-icon {
+  font-size: 28px;
+  color: var(--color-bg);
+}
+
+/* Title */
+.custom-select-title {
+  padding: 1em;
+  font-family: 'Poppins', var(--font-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-bg);
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+/* Options */
+.custom-select-option {
+  background: var(--color-text-secondary);
+  padding: 1.2em 1em;
+  border-radius: 8px;
+  margin-bottom: 0.5em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  color: var(--color-bg);
+  position: relative;
+  -webkit-tap-highlight-color: rgba(255, 190, 165, 0.3);
+  user-select: none;
+}
+
+.custom-select-option:active {
+  transform: scale(0.98);
+  background: rgba(193, 193, 193, 0.9);
+}
+
+.custom-select-option.selected {
+  background: linear-gradient(135deg, var(--color-deep-brown), var(--color-peach));
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.custom-select-option.selected::after {
+  content: '';
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Scrollbar styling for options container */
+.custom-select-options::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-select-options::-webkit-scrollbar-track {
+  background: rgba(193, 193, 193, 0.2);
+  border-radius: 10px;
+}
+
+.custom-select-options::-webkit-scrollbar-thumb {
+  background: var(--color-peach);
+  border-radius: 10px;
+}
+
+.custom-select-options::-webkit-scrollbar-thumb:hover {
+  background: var(--color-deep-brown);
+}
+
+/* Contact form specific styling */
+.contact-form .custom-select-trigger {
+  padding: 1em 1.25em;
+  font-size: 0.95rem;
+  border-radius: 8px;
+}
+
+.contact-form .custom-select-trigger span {
+  font-size: 0.95rem;
+}
+
+/* Desktop - hide custom select */
+@media (min-width: 901px) {
+  .custom-select {
+    display: none !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 900px) {
+  .custom-select-options {
+    max-width: 100%;
+    max-height: 85vh;
+  }
+  
+  .custom-select-option {
+    padding: 1.5em 1.25em;
+    font-size: 15px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .custom-select-title {
+    font-size: 1.2rem;
+    padding: 1.2em 1em;
+  }
+}

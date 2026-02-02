@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Brevo API Configuration
-// IMPORTANT: Replace these values with your actual credentials before uploading to server
 define('BREVO_API_KEY', 'YOUR_BREVO_API_KEY_HERE');
 define('RECIPIENT_EMAIL', 'info@dubaitaxolution.com');
 define('SENDER_EMAIL', 'info@dubaitaxolution.com');

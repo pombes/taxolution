@@ -12,6 +12,8 @@ footer {
   top: -20%;
   left: 0;
   transform: rotate(180deg);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .footer-header {
@@ -198,7 +200,6 @@ select {
   flex: 1;
   border: 1px solid rgba(255, 190, 165, 0.3);
   outline: none;
-  text-transform: uppercase;
   padding: 1.5em 1em;
   border-radius: 6px;
   transition: all 0.3s ease;
@@ -225,7 +226,6 @@ select {
 }
 
 select option {
-  text-transform: uppercase;
   background: #0F2642;
   color: var(--color-white);
 }
@@ -235,6 +235,25 @@ textarea:focus,
 select:focus {
   border-color: var(--color-peach);
   box-shadow: 0 0 0 2px rgba(255, 190, 165, 0.2);
+}
+
+/* Prevent white background on autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #0F2642 inset !important;
+  -webkit-text-fill-color: var(--color-white) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #0F2642 inset !important;
+  -webkit-text-fill-color: var(--color-white) !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 /* Professional Footer Main Section */
