@@ -4,7 +4,9 @@ footer {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding-top: 25em;
+  padding-top: 15em;
+  margin-top: 0;
+  z-index: 1;
 }
 
 .footer-bg {
@@ -122,6 +124,8 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  position: relative;
+  z-index: 10;
 }
 
 .form-col:nth-child(1) {
@@ -207,6 +211,8 @@ select {
   font-family: var(--font-primary);
   font-size: 13px;
   color: var(--color-white);
+  position: relative;
+  z-index: 11;
 }
 
 input::placeholder,
@@ -490,7 +496,7 @@ textarea:-webkit-autofill:active {
 
 @media (max-width: 900px) {
   footer {
-    padding-top: 20em;
+    padding-top: 8em;
   }
 
   .contact-callout {

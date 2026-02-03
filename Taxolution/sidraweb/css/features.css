@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 2em 2em 4em 2em;
+  padding: 2em 2em 3em 2em;
   background: var(--color-bg);
   display: flex;
   flex-direction: column;
@@ -128,7 +128,7 @@
 
 @media (max-width: 900px) {
   .features {
-    padding: 2em 1em 3em 1em;
+    padding: 2em 1em 0.5em 1em;
   }
 
   .features-header {
