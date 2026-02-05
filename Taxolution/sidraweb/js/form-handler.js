@@ -112,6 +112,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         console.log('Parsed result:', result);
         
+        // Show debug info if available
+        if (result.debug) {
+          console.error('Server debug info:', result.debug);
+        }
+        
         if (result.success) {
           // Success! Show success message
           showMessage(form, result.message || 'Thank you! We will contact you within 24 hours.', 'success');

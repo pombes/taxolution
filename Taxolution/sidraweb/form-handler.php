@@ -22,8 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 
-// Brevo API Configuration
-define('BREVO_API_KEY', 'YOUR_BREVO_API_KEY_HERE');
+// Email Configuration (via hosting)
 define('RECIPIENT_EMAIL', 'info@dubaitaxolution.com');
 define('SENDER_EMAIL', 'info@dubaitaxolution.com');
 define('SENDER_NAME', 'Dubai Taxolution Website');
@@ -126,54 +125,28 @@ $emailContent = "
 </html>
 ";
 
-// Prepare Brevo API request
-$brevoData = [
-    'sender' => [
-        'name' => SENDER_NAME,
-        'email' => SENDER_EMAIL
-    ],
-    'to' => [
-        [
-            'email' => RECIPIENT_EMAIL,
-            'name' => 'Dubai Taxolution'
-        ]
-    ],
-    'subject' => "New Contact Form: {$service} - {$name}",
-    'htmlContent' => $emailContent,
-    'replyTo' => [
-        'email' => $email,
-        'name' => $name
-    ]
-];
+// Prepare email headers
+$subject = "New Contact Form: {$service} - {$name}";
+$headers = "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+$headers .= "From: " . SENDER_NAME . " <" . SENDER_EMAIL . ">\r\n";
+$headers .= "Reply-To: {$name} <{$email}>\r\n";
+$headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
-// Send email via Brevo API
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.brevo.com/v3/smtp/email');
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($brevoData));
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-    'accept: application/json',
-    'api-key: ' . BREVO_API_KEY,
-    'content-type: application/json'
-]);
-
-$response = curl_exec($ch);
-$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-$curlError = curl_error($ch);
-curl_close($ch);
+// Send email via PHP mail() function (hosting)
+$mailSent = mail(RECIPIENT_EMAIL, $subject, $emailContent, $headers);
 
 // Handle response
-if ($httpCode === 201) {
+if ($mailSent) {
+    // Success
     http_response_code(200);
     echo json_encode([
         'success' => true,
-        'message' => 'Thank you for your message! We\'ll get back to you within 24 hours.'
+        'message' => 'Thank you for your message! We will get back to you within 24 hours.'
     ]);
 } else {
-    // Log error for debugging
-    error_log("Brevo API Error: HTTP {$httpCode} - {$response}");
-    
+    // Error
+    error_log("PHP mail() failed for contact form submission from: {$email}");
     http_response_code(500);
     echo json_encode([
         'success' => false,

@@ -679,17 +679,17 @@
           <div class="form-col">
             <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" />
             <div class="form-row">
-              <input type="text" name="name" placeholder="Your Name *" required />
-              <input type="text" name="company" placeholder="Your Company" />
+              <input type="text" name="name" placeholder="Your Name *" required autocomplete="name" />
+              <input type="text" name="company" placeholder="Your Company" autocomplete="organization" />
             </div>
             <div class="form-row">
-              <input type="email" name="email" placeholder="Email *" required />
+              <input type="email" name="email" placeholder="Email *" required autocomplete="email" />
             </div>
             <div class="form-row">
-              <input type="tel" name="phone" placeholder="Phone Number *" required />
+              <input type="tel" name="phone" placeholder="Phone Number *" required autocomplete="tel" />
             </div>
             <div class="form-row">
-              <select name="service" required>
+              <select name="service" required autocomplete="off">
                 <option value="" disabled selected>Select a Service *</option>
                 <option value="Accounting">Accounting</option>
                 <option value="Business Formation">Business Formation</option>
@@ -699,7 +699,7 @@
               </select>
             </div>
             <div class="form-row">
-              <select name="revenue" required>
+              <select name="revenue" required autocomplete="off">
                 <option value="" disabled selected>Estimated Annual Revenue *</option>
                 <option value="Less than AED 500,000">Less than AED 500,000</option>
                 <option value="AED 500,000 - 1 million">AED 500,000 - 1 million</option>
@@ -709,7 +709,7 @@
               </select>
             </div>
             <div class="form-row">
-              <textarea name="message" rows="4" placeholder="Tell us more about your business or specific needs *" required></textarea>
+              <textarea name="message" rows="4" placeholder="Tell us more about your business or specific needs *" required autocomplete="off"></textarea>
             </div>
             <div class="form-row">
               <button type="submit" class="submit-btn">
