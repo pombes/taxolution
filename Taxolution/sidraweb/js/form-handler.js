@@ -1,9 +1,21 @@
 // Contact Form Handler with Brevo API
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('Form handler loaded');
+  
   // Handle actual <form> elements (contact.html)
   const formElements = document.querySelectorAll('form.contact-form');
+  console.log('Found forms:', formElements.length);
+  
   formElements.forEach(form => {
-    form.addEventListener('submit', handleFormSubmit);
+    console.log('Adding submit listener to form:', form);
+    form.addEventListener('submit', function(e) {
+      console.log('Form submit event triggered!');
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      handleFormSubmit.call(form, e);
+      return false;
+    });
   });
   
   // Handle div.footer-form elements
@@ -14,16 +26,33 @@ document.addEventListener('DOMContentLoaded', function() {
     if (submitBtn) {
       submitBtn.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
         handleFormSubmit.call(formDiv, e);
+        return false;
       });
     }
   });
   
   async function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    const form = this;
-    const submitBtn = form.querySelector('button.submit-btn') || form.querySelector('div.submit-btn') || form.querySelector('.submit-btn');
+    try {
+      // Double check preventDefault - CRITICAL to prevent page reload
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+      }
+      
+      console.log('handleFormSubmit called for form:', this);
+      
+      const form = this;
+      
+      // Prevent any default form behavior
+      if (form.tagName === 'FORM') {
+        form.setAttribute('onsubmit', 'return false;');
+      }
+      
+      const submitBtn = form.querySelector('button.submit-btn') || form.querySelector('div.submit-btn') || form.querySelector('.submit-btn');
     
     // Get all input values
     const data = {
@@ -66,11 +95,26 @@ document.addEventListener('DOMContentLoaded', function() {
           body: JSON.stringify(data)
         });
         
-        const result = await response.json();
+        console.log('Response status:', response.status);
+        console.log('Response headers:', response.headers.get('content-type'));
+        
+        let result;
+        const responseText = await response.text();
+        console.log('Response text:', responseText);
+        
+        try {
+          result = JSON.parse(responseText);
+        } catch (parseError) {
+          console.error('JSON parse error:', parseError);
+          showMessage(form, 'Server response error. Please try again.', 'error');
+          return;
+        }
+        
+        console.log('Parsed result:', result);
         
         if (result.success) {
           // Success! Show success message
-          showMessage(form, result.message || 'Thank you! We\'ll contact you within 24 hours.', 'success');
+          showMessage(form, result.message || 'Thank you! We will contact you within 24 hours.', 'success');
           
           // Reset form after short delay
           setTimeout(() => {
@@ -96,15 +140,26 @@ document.addEventListener('DOMContentLoaded', function() {
         showMessage(form, 'Network error. Please check your connection and try again.', 'error');
       } finally {
         // Re-enable button
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnText;
-        submitBtn.style.cursor = 'pointer';
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+          submitBtn.style.cursor = 'pointer';
+        }
       }
+    } catch (error) {
+      console.error('Critical error in handleFormSubmit:', error);
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      showMessage(form, 'An error occurred. Please try again.', 'error');
     }
   }
   
   // Show message function
   function showMessage(form, message, type) {
+    console.log('showMessage called:', message, type);
+    
     // Remove existing messages
     const existingMsg = form.querySelector('.form-message');
     if (existingMsg) {
@@ -127,12 +182,30 @@ document.addEventListener('DOMContentLoaded', function() {
       animation: 'slideIn 0.3s ease-out',
       backgroundColor: type === 'success' ? 'rgba(76, 175, 80, 0.1)' : 'rgba(244, 67, 54, 0.1)',
       color: type === 'success' ? '#2e7d32' : '#c62828',
-      border: `1px solid ${type === 'success' ? 'rgba(76, 175, 80, 0.3)' : 'rgba(244, 67, 54, 0.3)'}`
+      border: `1px solid ${type === 'success' ? 'rgba(76, 175, 80, 0.3)' : 'rgba(244, 67, 54, 0.3)'}`,
+      width: '100%',
+      display: 'block'
     });
     
-    // Insert message after submit button
+    // Insert message after submit button or form
     const submitBtn = form.querySelector('.submit-btn');
-    submitBtn.parentElement.appendChild(messageDiv);
+    if (submitBtn) {
+      // Try to insert after button's parent (form-row)
+      const buttonParent = submitBtn.parentElement;
+      if (buttonParent && buttonParent.classList.contains('form-row')) {
+        buttonParent.insertAdjacentElement('afterend', messageDiv);
+      } else if (buttonParent) {
+        buttonParent.appendChild(messageDiv);
+      } else {
+        form.appendChild(messageDiv);
+      }
+    } else {
+      // Fallback: append to form directly
+      form.appendChild(messageDiv);
+    }
+    
+    // Scroll to message
+    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     
     // Auto-remove after 5 seconds
     setTimeout(() => {
