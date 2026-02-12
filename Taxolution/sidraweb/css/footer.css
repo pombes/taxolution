@@ -150,6 +150,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  margin-top: 1em; /* Add spacing above submit button */
 }
 
 .submit-btn {
@@ -202,6 +203,7 @@ footer {
 
 .form-row:has(.submit-btn) {
   justify-content: center;
+  margin-top: 1em; /* Add spacing above submit button */
 }
 
 input,
@@ -220,6 +222,15 @@ select {
   position: relative;
   z-index: 1103;
   pointer-events: auto;
+}
+
+/* Prevent iOS auto-zoom on input focus - minimum 16px font-size */
+@media (max-width: 900px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Minimum 16px to prevent iOS auto-zoom */
+  }
 }
 
 input::placeholder,
