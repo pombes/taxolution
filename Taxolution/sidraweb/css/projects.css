@@ -32,6 +32,10 @@ section.card {
   border-radius: 12px;
   padding: 2em;
   background: var(--color-bg-secondary);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .project-img {
@@ -44,6 +48,7 @@ section.card {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-shrink: 0;
 }
 
 .project-header h3 {
@@ -62,16 +67,19 @@ section.card {
 
 .project-copy p {
   padding: 0.5em 0;
+  flex-shrink: 0;
 }
 
 .project-cta {
-  position: absolute;
+  position: relative;
   left: 0;
-  bottom: 0;
   width: 100%;
   padding: 1em;
+  padding-bottom: 0;
+  margin-top: auto;
   text-transform: uppercase;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .project-cta a {
@@ -135,6 +143,7 @@ section.card {
   display: flex;
   flex-direction: column;
   gap: 0.65em;
+  flex-shrink: 0;
 }
 
 .tax-service-item {
@@ -191,7 +200,7 @@ section.card {
 /* Smaller desktop screens (like MacBook Pro 13" non-fullscreen) */
 @media (max-width: 1400px) and (min-width: 901px) {
   .project-copy {
-    padding-bottom: 6em;
+    padding-bottom: 2em;
   }
   
   /* Reduce font sizes and spacing to fit better */
@@ -207,14 +216,14 @@ section.card {
   
   /* Fixed space between last tile and CTA */
   .tax-services-list {
-    margin-bottom: 3em;
+    margin-bottom: 1.5em;
   }
 }
 
 /* Extra fix for narrower laptop screens */
 @media (max-width: 1200px) and (min-width: 901px) {
   .project-copy {
-    padding-bottom: 6em;
+    padding-bottom: 2em;
   }
   
   .project-copy p {
@@ -224,14 +233,14 @@ section.card {
   
   .tax-services-list {
     gap: 0.5em;
-    margin: 0.75em 0 3.5em 0;
+    margin: 0.75em 0 1.5em 0;
   }
 }
 
 /* Even narrower laptop screens - 1100px */
 @media (max-width: 1100px) and (min-width: 1001px) {
   .project-copy {
-    padding-bottom: 6em;
+    padding-bottom: 2em;
   }
   
   .tax-content h4 {
@@ -245,14 +254,14 @@ section.card {
   
   .tax-services-list {
     gap: 0.45em;
-    margin-bottom: 4em;
+    margin-bottom: 1.5em;
   }
 }
 
 /* Very narrow laptop screens - 1000px */
 @media (max-width: 1000px) and (min-width: 901px) {
   .project-copy {
-    padding-bottom: 6em;
+    padding-bottom: 2em;
   }
   
   .project-copy > p {
@@ -272,7 +281,7 @@ section.card {
   
   .tax-services-list {
     gap: 0.4em;
-    margin: 0.65em 0 4.5em 0;
+    margin: 0.65em 0 1.5em 0;
   }
   
   .tax-service-item {

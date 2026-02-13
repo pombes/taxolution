@@ -32,8 +32,18 @@ RewriteRule (.*)\.html$ /$1 [R=301,L]
     ExpiresByType image/webp "access plus 1 year"
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
-    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 week"
 </IfModule>
+
+# Force favicon cache refresh
+<FilesMatch "Favicon-02\.png">
+    <IfModule mod_headers.c>
+        Header set Cache-Control "public, max-age=604800, must-revalidate"
+    </IfModule>
+</FilesMatch>
+
+# Redirect favicon.ico to new favicon (prevents old cached favicon)
+RewriteRule ^favicon\.ico$ ./assets/Favicon-02.png?v=2 [L,R=301]
 
 # Gzip compression for better performance
 <IfModule mod_deflate.c>
