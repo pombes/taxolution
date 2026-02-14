@@ -50,14 +50,14 @@ section.card {
 /* Content wrapper that scrolls */
 .project-copy-content {
   flex: 1;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
   padding: 2em;
   padding-right: calc(2em + 10px);
   min-height: 0;
   scrollbar-gutter: stable;
   -webkit-overflow-scrolling: touch;
-  /* Firefox scrollbar */
+  /* Force scrollbar to always show on macOS */
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 190, 165, 0.4) rgba(255, 190, 165, 0.05);
 }
@@ -92,23 +92,42 @@ section.card {
 .project-copy-content::-webkit-scrollbar {
   width: 10px;
   -webkit-appearance: none;
+  display: block;
 }
 
 .project-copy-content::-webkit-scrollbar-track {
-  background: rgba(255, 190, 165, 0.1);
+  background: rgba(255, 190, 165, 0.15);
   border-radius: 5px;
   margin: 0.5em 0;
+  -webkit-box-shadow: inset 0 0 2px rgba(255, 190, 165, 0.1);
 }
 
 .project-copy-content::-webkit-scrollbar-thumb {
-  background: rgba(255, 190, 165, 0.5);
+  background: rgba(255, 190, 165, 0.6);
   border-radius: 5px;
-  border: 2px solid rgba(255, 190, 165, 0.1);
+  border: 1px solid rgba(255, 190, 165, 0.2);
   min-height: 30px;
+  -webkit-box-shadow: 0 0 1px rgba(255, 190, 165, 0.3);
 }
 
 .project-copy-content::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 190, 165, 0.7);
+  background: rgba(255, 190, 165, 0.8);
+}
+
+/* Force scrollbar to always be visible on macOS Safari/Chrome */
+@supports (-webkit-appearance: none) {
+  .project-copy-content {
+    overflow-y: scroll;
+  }
+  
+  .project-copy-content::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+  }
+  
+  .project-copy-content::-webkit-scrollbar:vertical {
+    width: 10px;
+  }
 }
 
 .project-cta {
