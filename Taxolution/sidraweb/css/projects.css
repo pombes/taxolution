@@ -23,49 +23,25 @@ section.card {
   transform: translate3d(-50%, -50%, 0);
   width: 85%;
   height: 75%;
-  max-height: 75vh;
   display: flex;
-  align-items: stretch;
 }
 
 .project-copy {
   position: relative;
   flex: 1.75;
   border-radius: 12px;
-  padding: 0;
+  padding: 2em;
   background: var(--color-bg-secondary);
   display: flex;
   flex-direction: column;
   min-height: 0;
-  height: 100%;
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .project-img {
   flex: 3;
   border-radius: 12px;
   overflow: hidden;
-}
-
-/* Content wrapper that scrolls */
-/* 1. Forceer de container om altijd een 'scroll-laag' te hebben */
-.project-copy-content {
-  flex: 1;
-  overflow-y: scroll !important;
-  overflow-x: hidden;
-  padding: 2em;
-  padding-right: calc(2em + 12px);
-  min-height: 0;
-  scrollbar-gutter: stable;
-  -webkit-overflow-scrolling: touch;
-  /* Forceer hardware rendering zodat de scrollbar-layer niet 'slaapt' */
-  transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  perspective: 1000;
-  display: block;
-  /* Firefox scrollbar - must be on the element itself */
-  scrollbar-width: thin;
-  scrollbar-color: #ffbea5 #0F2642;
 }
 
 .project-header {
@@ -89,68 +65,21 @@ section.card {
   padding: 0 !important;
 }
 
-.project-copy-content p {
+.project-copy p {
   padding: 0.5em 0;
   flex-shrink: 0;
 }
 
-/* Custom scrollbar styling - always visible when content overflows */
-/* 2. De Scrollbar zelf: Geen transparantie! */
-.project-copy-content::-webkit-scrollbar {
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  width: 12px !important;
-  height: 12px !important;
-  display: block !important;
-  /* Gebruik een solide kleur die bijna gelijk is aan je achtergrond */
-  background-color: #0F2642 !important;
-}
-
-/* 3. De Track: Geef deze een lichte inner-shadow */
-.project-copy-content::-webkit-scrollbar-track {
-  background-color: #153357 !important;
-  border-radius: 10px;
-  margin: 0.5em 0;
-  /* Dit dwingt weergave af */
-  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
-}
-
-/* 4. De Thumb: Maak deze overduidelijk aanwezig */
-.project-copy-content::-webkit-scrollbar-thumb {
-  border-radius: 10px !important;
-  /* Gebruik een solide kleur zonder rgba-transparantie */
-  background-color: #ffbea5 !important;
-  /* Maakt hem los van de rand */
-  border: 3px solid #0F2642 !important;
-  min-height: 40px;
-  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
-  opacity: 1 !important;
-  visibility: visible !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-}
-
-.project-copy-content::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 190, 165, 0.9) !important;
-  border-color: rgba(255, 190, 165, 0.5) !important;
-}
-
-/* Note: scrollbar-gutter: stable always removed to avoid conflict with -webkit pseudo-elements on Safari */
-
 .project-cta {
   position: relative;
+  left: 0;
   width: 100%;
-  padding: 1.5em 2em;
+  padding: 1em;
+  padding-bottom: 0;
+  margin-top: auto;
   text-transform: uppercase;
   text-align: center;
-  background: var(--color-bg-secondary);
   flex-shrink: 0;
-  border-top: 1px solid rgba(255, 190, 165, 0.1);
 }
 
 .project-cta a {
@@ -270,9 +199,18 @@ section.card {
 
 /* Smaller desktop screens (like MacBook Pro 13" non-fullscreen) */
 @media (max-width: 1400px) and (min-width: 901px) {
-  .project-copy-content {
-    padding: 2em;
-    padding-right: calc(2em + 10px);
+  .project-copy {
+    padding-bottom: 2em;
+  }
+  
+  /* Hide description paragraph on smaller desktop screens */
+  .project-copy > p {
+    display: none;
+  }
+  
+  /* Reduce title size */
+  .project-header h3 {
+    font-size: 32px;
   }
   
   /* Reduce font sizes and spacing to fit better */
@@ -289,32 +227,46 @@ section.card {
   /* Fixed space between last tile and CTA */
   .tax-services-list {
     margin-bottom: 1.5em;
+    margin-top: 0.5em;
   }
 }
 
 /* Extra fix for narrower laptop screens */
 @media (max-width: 1200px) and (min-width: 901px) {
-  .project-copy-content {
-    padding: 2em;
-    padding-right: calc(2em + 10px);
+  .project-copy {
+    padding-bottom: 2em;
   }
   
-  .project-copy-content p {
-    font-size: 12px;
-    line-height: 1.4;
+  /* Hide description paragraph on smaller desktop screens */
+  .project-copy > p {
+    display: none;
+  }
+  
+  /* Reduce title size */
+  .project-header h3 {
+    font-size: 28px;
   }
   
   .tax-services-list {
     gap: 0.5em;
-    margin: 0.75em 0 1.5em 0;
+    margin: 0.5em 0 1.5em 0;
   }
 }
 
 /* Even narrower laptop screens - 1100px */
 @media (max-width: 1100px) and (min-width: 1001px) {
-  .project-copy-content {
-    padding: 2em;
-    padding-right: calc(2em + 10px);
+  .project-copy {
+    padding-bottom: 2em;
+  }
+  
+  /* Hide description paragraph on smaller desktop screens */
+  .project-copy > p {
+    display: none;
+  }
+  
+  /* Reduce title size */
+  .project-header h3 {
+    font-size: 26px;
   }
   
   .tax-content h4 {
@@ -328,21 +280,24 @@ section.card {
   
   .tax-services-list {
     gap: 0.45em;
-    margin-bottom: 1.5em;
+    margin: 0.5em 0 1.5em 0;
   }
 }
 
 /* Very narrow laptop screens - 1000px */
 @media (max-width: 1000px) and (min-width: 901px) {
-  .project-copy-content {
-    padding: 2em;
-    padding-right: calc(2em + 10px);
+  .project-copy {
+    padding-bottom: 2em;
   }
   
-  .project-copy-content > p {
-    font-size: 11.5px;
-    line-height: 1.35;
-    padding: 0.4em 0;
+  /* Hide description paragraph on smaller desktop screens */
+  .project-copy > p {
+    display: none;
+  }
+  
+  /* Reduce title size */
+  .project-header h3 {
+    font-size: 24px;
   }
   
   .tax-content h4 {
@@ -356,7 +311,7 @@ section.card {
   
   .tax-services-list {
     gap: 0.4em;
-    margin: 0.65em 0 1.5em 0;
+    margin: 0.5em 0 1.5em 0;
   }
   
   .tax-service-item {

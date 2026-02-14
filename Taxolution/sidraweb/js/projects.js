@@ -42,49 +42,4 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     );
   });
-
-  // Force scrollbar to be visible on macOS by triggering a scroll event
-  function forceScrollbarVisibility() {
-    const contentWrappers = document.querySelectorAll('.project-copy-content');
-    
-    contentWrappers.forEach(wrapper => {
-      // Check if content actually overflows
-      if (wrapper.scrollHeight > wrapper.clientHeight) {
-        // Force scrollbar visibility by triggering scroll
-        // Store current scroll position
-        const currentScroll = wrapper.scrollTop;
-        
-        // Trigger minimal scroll to activate scrollbar on macOS
-        wrapper.scrollTop = 1;
-        
-        // Use requestAnimationFrame to ensure scrollbar appears
-        requestAnimationFrame(() => {
-          wrapper.scrollTop = currentScroll;
-          
-          // Trigger another minimal scroll after a delay to keep it visible
-          setTimeout(() => {
-            if (wrapper.scrollHeight > wrapper.clientHeight) {
-              wrapper.scrollTop = currentScroll + 0.5;
-              requestAnimationFrame(() => {
-                wrapper.scrollTop = currentScroll;
-              });
-            }
-          }, 100);
-        });
-      }
-    });
-  }
-
-  // Run multiple times to ensure scrollbar appears
-  forceScrollbarVisibility();
-  setTimeout(forceScrollbarVisibility, 200);
-  setTimeout(forceScrollbarVisibility, 500);
-  setTimeout(forceScrollbarVisibility, 1000);
-  
-  // Also run on resize
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(forceScrollbarVisibility, 100);
-  });
 });
