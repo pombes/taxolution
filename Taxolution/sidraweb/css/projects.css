@@ -31,11 +31,13 @@ section.card {
   flex: 1.75;
   border-radius: 12px;
   padding: 2em;
+  padding-bottom: 5.5em;
   background: var(--color-bg-secondary);
   display: flex;
   flex-direction: column;
   min-height: 0;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .project-img {
@@ -70,16 +72,34 @@ section.card {
   flex-shrink: 0;
 }
 
+/* Custom scrollbar styling - subtle and only when needed */
+.project-copy::-webkit-scrollbar {
+  width: 6px;
+}
+
+.project-copy::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.project-copy::-webkit-scrollbar-thumb {
+  background: rgba(255, 190, 165, 0.2);
+  border-radius: 3px;
+}
+
+.project-copy::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 190, 165, 0.4);
+}
+
 .project-cta {
-  position: relative;
+  position: absolute;
   left: 0;
+  bottom: 0;
   width: 100%;
-  padding: 1em;
-  padding-bottom: 0;
-  margin-top: auto;
+  padding: 1.5em 2em;
   text-transform: uppercase;
   text-align: center;
-  flex-shrink: 0;
+  background: var(--color-bg-secondary);
+  z-index: 10;
 }
 
 .project-cta a {
@@ -200,7 +220,7 @@ section.card {
 /* Smaller desktop screens (like MacBook Pro 13" non-fullscreen) */
 @media (max-width: 1400px) and (min-width: 901px) {
   .project-copy {
-    padding-bottom: 2em;
+    padding-bottom: 5.5em;
   }
   
   /* Reduce font sizes and spacing to fit better */
@@ -223,7 +243,7 @@ section.card {
 /* Extra fix for narrower laptop screens */
 @media (max-width: 1200px) and (min-width: 901px) {
   .project-copy {
-    padding-bottom: 2em;
+    padding-bottom: 5.5em;
   }
   
   .project-copy p {
@@ -240,7 +260,7 @@ section.card {
 /* Even narrower laptop screens - 1100px */
 @media (max-width: 1100px) and (min-width: 1001px) {
   .project-copy {
-    padding-bottom: 2em;
+    padding-bottom: 5.5em;
   }
   
   .tax-content h4 {
@@ -261,7 +281,7 @@ section.card {
 /* Very narrow laptop screens - 1000px */
 @media (max-width: 1000px) and (min-width: 901px) {
   .project-copy {
-    padding-bottom: 2em;
+    padding-bottom: 5.5em;
   }
   
   .project-copy > p {
