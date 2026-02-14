@@ -31,6 +31,7 @@ section.card {
   flex: 1.75;
   border-radius: 12px;
   padding: 2em;
+  padding-right: calc(2em + 8px);
   padding-bottom: 5.5em;
   background: var(--color-bg-secondary);
   display: flex;
@@ -38,6 +39,10 @@ section.card {
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
+  scrollbar-gutter: stable;
+  /* Firefox scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 190, 165, 0.4) rgba(255, 190, 165, 0.05);
 }
 
 .project-img {
@@ -72,22 +77,25 @@ section.card {
   flex-shrink: 0;
 }
 
-/* Custom scrollbar styling - subtle and only when needed */
+/* Custom scrollbar styling - visible when content overflows */
 .project-copy::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 .project-copy::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(255, 190, 165, 0.05);
+  border-radius: 4px;
+  margin: 0.5em 0;
 }
 
 .project-copy::-webkit-scrollbar-thumb {
-  background: rgba(255, 190, 165, 0.2);
-  border-radius: 3px;
+  background: rgba(255, 190, 165, 0.4);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 190, 165, 0.1);
 }
 
 .project-copy::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 190, 165, 0.4);
+  background: rgba(255, 190, 165, 0.6);
 }
 
 .project-cta {
