@@ -48,21 +48,24 @@ section.card {
 }
 
 /* Content wrapper that scrolls */
+/* 1. Forceer de container om altijd een 'scroll-laag' te hebben */
 .project-copy-content {
   flex: 1;
-  overflow-y: scroll;
+  overflow-y: scroll !important;
   overflow-x: hidden;
   padding: 2em;
   padding-right: calc(2em + 12px);
   min-height: 0;
   scrollbar-gutter: stable;
   -webkit-overflow-scrolling: touch;
-  /* Force hardware acceleration and keep layer active */
+  /* Forceer hardware rendering zodat de scrollbar-layer niet 'slaapt' */
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  perspective: 1000;
   display: block;
-  transform: translateZ(0);
   /* Firefox scrollbar - must be on the element itself */
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 190, 165, 0.6) rgba(255, 190, 165, 0.3);
+  scrollbar-color: #ffbea5 #0F2642;
 }
 
 .project-header {
@@ -92,43 +95,42 @@ section.card {
 }
 
 /* Custom scrollbar styling - always visible when content overflows */
-/* Webkit browsers (Chrome, Safari, Edge) - Force visibility by overriding system defaults */
+/* 2. De Scrollbar zelf: Geen transparantie! */
 .project-copy-content::-webkit-scrollbar {
+  -webkit-appearance: none !important;
+  appearance: none !important;
   width: 12px !important;
   height: 12px !important;
   display: block !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  /* NO transparent - macOS hides scrollbars with transparent backgrounds */
-  background: rgba(255, 190, 165, 0.1) !important;
+  /* Gebruik een solide kleur die bijna gelijk is aan je achtergrond */
+  background-color: #0F2642 !important;
 }
 
+/* 3. De Track: Geef deze een lichte inner-shadow */
 .project-copy-content::-webkit-scrollbar-track {
-  /* Solid color with higher opacity - macOS ignores transparent tracks */
-  background: rgba(255, 190, 165, 0.3) !important;
+  background-color: #153357 !important;
   border-radius: 10px;
   margin: 0.5em 0;
-  -webkit-box-shadow: inset 0 0 3px rgba(255, 190, 165, 0.5);
-  box-shadow: inset 0 0 3px rgba(255, 190, 165, 0.5);
-  /* Force track to always be visible */
+  /* Dit dwingt weergave af */
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
   opacity: 1 !important;
   visibility: visible !important;
   display: block !important;
-  /* Ensure track has solid background - no transparency */
-  border: 1px solid rgba(255, 190, 165, 0.2);
 }
 
+/* 4. De Thumb: Maak deze overduidelijk aanwezig */
 .project-copy-content::-webkit-scrollbar-thumb {
-  background: rgba(255, 190, 165, 0.7) !important;
-  border-radius: 10px;
-  border: 2px solid rgba(255, 190, 165, 0.3) !important;
+  border-radius: 10px !important;
+  /* Gebruik een solide kleur zonder rgba-transparantie */
+  background-color: #ffbea5 !important;
+  /* Maakt hem los van de rand */
+  border: 3px solid #0F2642 !important;
   min-height: 40px;
-  -webkit-box-shadow: 0 0 2px rgba(255, 190, 165, 0.5);
-  box-shadow: 0 0 2px rgba(255, 190, 165, 0.5);
-  /* Force thumb to always be visible */
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
   opacity: 1 !important;
   visibility: visible !important;
-  /* Prevent system from hiding it */
   -webkit-appearance: none !important;
   appearance: none !important;
 }
