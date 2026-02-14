@@ -55,11 +55,14 @@ section.card {
   padding: 2em;
   padding-right: calc(2em + 12px);
   min-height: 0;
-  scrollbar-gutter: stable always;
+  scrollbar-gutter: stable;
   -webkit-overflow-scrolling: touch;
+  /* Force hardware acceleration and keep layer active */
+  display: block;
+  transform: translateZ(0);
   /* Firefox scrollbar - must be on the element itself */
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 190, 165, 0.6) rgba(255, 190, 165, 0.15);
+  scrollbar-color: rgba(255, 190, 165, 0.6) rgba(255, 190, 165, 0.3);
 }
 
 .project-header {
@@ -96,18 +99,23 @@ section.card {
   display: block !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  background: transparent;
+  /* NO transparent - macOS hides scrollbars with transparent backgrounds */
+  background: rgba(255, 190, 165, 0.1) !important;
 }
 
 .project-copy-content::-webkit-scrollbar-track {
-  background: rgba(255, 190, 165, 0.2) !important;
+  /* Solid color with higher opacity - macOS ignores transparent tracks */
+  background: rgba(255, 190, 165, 0.3) !important;
   border-radius: 10px;
   margin: 0.5em 0;
-  -webkit-box-shadow: inset 0 0 3px rgba(255, 190, 165, 0.3);
-  box-shadow: inset 0 0 3px rgba(255, 190, 165, 0.3);
+  -webkit-box-shadow: inset 0 0 3px rgba(255, 190, 165, 0.5);
+  box-shadow: inset 0 0 3px rgba(255, 190, 165, 0.5);
   /* Force track to always be visible */
   opacity: 1 !important;
   visibility: visible !important;
+  display: block !important;
+  /* Ensure track has solid background - no transparency */
+  border: 1px solid rgba(255, 190, 165, 0.2);
 }
 
 .project-copy-content::-webkit-scrollbar-thumb {
@@ -130,11 +138,7 @@ section.card {
   border-color: rgba(255, 190, 165, 0.5) !important;
 }
 
-/* Force scrollbar to always show - override macOS auto-hide */
-.project-copy-content {
-  /* Ensure scrollbar space is always reserved */
-  scrollbar-gutter: stable always;
-}
+/* Note: scrollbar-gutter: stable always removed to avoid conflict with -webkit pseudo-elements on Safari */
 
 .project-cta {
   position: relative;
