@@ -197,6 +197,37 @@ section.card {
   opacity: 0.85;
 }
 
+/* Hide description on smaller to medium desktop screens (901px - 1500px) */
+@media (min-width: 901px) and (max-width: 1500px) {
+  .project-copy > p {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+}
+
+/* Medium desktop screens - also hide description for better fit */
+@media (max-width: 1600px) and (min-width: 1401px) {
+  .project-copy > p {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .project-header h3 {
+    font-size: 36px;
+  }
+  
+  .tax-services-list {
+    margin-top: 0.5em;
+  }
+}
+
 /* Smaller desktop screens (like MacBook Pro 13" non-fullscreen) */
 @media (max-width: 1400px) and (min-width: 901px) {
   .project-copy {
@@ -205,7 +236,11 @@ section.card {
   
   /* Hide description paragraph on smaller desktop screens */
   .project-copy > p {
-    display: none;
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
   /* Reduce title size */
@@ -239,7 +274,11 @@ section.card {
   
   /* Hide description paragraph on smaller desktop screens */
   .project-copy > p {
-    display: none;
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
   /* Reduce title size */
@@ -261,7 +300,11 @@ section.card {
   
   /* Hide description paragraph on smaller desktop screens */
   .project-copy > p {
-    display: none;
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
   /* Reduce title size */
@@ -292,7 +335,11 @@ section.card {
   
   /* Hide description paragraph on smaller desktop screens */
   .project-copy > p {
-    display: none;
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
   /* Reduce title size */
