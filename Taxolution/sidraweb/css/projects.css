@@ -103,11 +103,12 @@ section.card {
 }
 
 .project-copy-content::-webkit-scrollbar-thumb {
-  background: rgba(255, 190, 165, 0.6);
+  background: rgba(255, 190, 165, 0.7);
   border-radius: 5px;
-  border: 1px solid rgba(255, 190, 165, 0.2);
+  border: 1px solid rgba(255, 190, 165, 0.3);
   min-height: 30px;
-  -webkit-box-shadow: 0 0 1px rgba(255, 190, 165, 0.3);
+  -webkit-box-shadow: 0 0 2px rgba(255, 190, 165, 0.4);
+  opacity: 1;
 }
 
 .project-copy-content::-webkit-scrollbar-thumb:hover {
@@ -128,6 +129,17 @@ section.card {
   .project-copy-content::-webkit-scrollbar:vertical {
     width: 10px;
   }
+}
+
+/* Ensure scrollbar is visible when has-scrollbar class is present */
+.project-copy-content.has-scrollbar::-webkit-scrollbar {
+  display: block !important;
+  -webkit-appearance: none !important;
+}
+
+.project-copy-content.has-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 190, 165, 0.6) !important;
+  opacity: 1 !important;
 }
 
 .project-cta {
