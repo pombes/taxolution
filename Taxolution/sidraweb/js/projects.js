@@ -43,32 +43,4 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   });
 
-  // Force scrollbar to be visible on macOS when content overflows
-  function showScrollbars() {
-    const contentWrappers = document.querySelectorAll('.project-copy-content');
-    
-    contentWrappers.forEach(wrapper => {
-      // Check if content overflows
-      if (wrapper.scrollHeight > wrapper.clientHeight) {
-        // Trigger a minimal scroll to make scrollbar visible on macOS
-        const currentScroll = wrapper.scrollTop;
-        wrapper.scrollTop = currentScroll + 1;
-        // Immediately scroll back
-        setTimeout(() => {
-          wrapper.scrollTop = currentScroll;
-        }, 10);
-        
-        // Add a class to indicate scrollbar should be visible
-        wrapper.classList.add('has-scrollbar');
-      }
-    });
-  }
-
-  // Run on load and after a short delay to ensure layout is complete
-  showScrollbars();
-  setTimeout(showScrollbars, 100);
-  setTimeout(showScrollbars, 500);
-  
-  // Also run when window is resized
-  window.addEventListener('resize', showScrollbars);
 });
